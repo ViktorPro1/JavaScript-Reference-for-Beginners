@@ -1,0 +1,98 @@
+# 📖 JS Довідник — JavaScript Cheat Sheet PWA
+
+Інтерактивний довідник команд JavaScript для фронтенд розробника. Встановлюється як PWA на телефон і працює офлайн.
+
+🔗 **Live demo:** [cheat-sheet-for-javascript.netlify.app](https://cheat-sheet-for-javascript.netlify.app)
+
+---
+
+## 🚀 Можливості
+
+- 📱 **PWA** — встановлюється на телефон як застосунок
+- 🔌 **Офлайн режим** — працює без інтернету (Service Worker)
+- 🔍 **Пошук** — миттєвий пошук по всіх командах
+- 🎨 **Темна тема** — комфортно для очей
+- 📱 **Адаптивний** — десктоп, планшет, 420px, 320px
+- 🃏 **Акордеон картки** — розгортаються по кліку
+
+---
+
+## 📚 Розділи
+
+| Розділ                 | Команди                                                          |
+| ---------------------- | ---------------------------------------------------------------- |
+| 🎯 DOM пошук           | `getElementById`, `querySelector`, `querySelectorAll`, `closest` |
+| ✏️ Зміна елементів     | `textContent`, `innerHTML`, `setAttribute`, `value`              |
+| ➕ Створення/видалення | `createElement`, `appendChild`, `remove`                         |
+| 🎨 Стилі та класи      | `classList`, `style`                                             |
+| ⚡ Події               | `addEventListener`, `event.target`, `preventDefault`             |
+| 📋 Типи подій          | миша, клавіатура, форми, сторінка                                |
+| 📦 Змінні              | `const`, `let`, template literals                                |
+| 🔢 Типи даних          | string, number, boolean, null, undefined                         |
+| 🔀 Умови               | `if/else`, тернарний оператор                                    |
+| 🔄 Цикли               | `for`, `for...of`                                                |
+| ⚙️ Функції             | `function`, `setTimeout`, `setInterval`                          |
+| ➡️ Стрілкові функції   | arrow function `=>`                                              |
+| 📚 Масиви              | основи, індекси, `length`                                        |
+| 🛠️ Методи масивів      | `map`, `filter`, `find`, `push`, `forEach`, `includes`           |
+| 🗂️ Об'єкти             | основи, деструктуризація                                         |
+| 🔤 Рядки               | `toUpperCase`, `trim`, `replace`, `split`, `slice`               |
+| 🌐 fetch / API         | GET, POST запити                                                 |
+| ⏳ async / await       | асинхронний код, `try/catch`                                     |
+| 🤝 Promise             | `then`, `catch`, `finally`                                       |
+| 💾 localStorage        | `setItem`, `getItem`, `removeItem`                               |
+| 🖥️ console             | `log`, `error`, `table`, `time`                                  |
+| 🪟 window              | `innerWidth`, `scrollY`, `location`                              |
+| 📝 Форми               | `submit`, `value`, `reset`, валідація                            |
+
+---
+
+## 🛠️ Стек
+
+- **HTML5** — семантична розмітка
+- **CSS3** — кастомні властивості, Grid, Flexbox, анімації
+- **Vanilla JavaScript** — без фреймворків
+- **PWA** — Web App Manifest + Service Worker
+- **Netlify** — деплой
+
+---
+
+## 📁 Структура
+
+```
+project/
+├── index.html      # Розмітка і весь контент
+├── style.css       # Стилі + медіа-запити
+├── script.js       # Логіка: навігація, пошук
+├── manifest.json   # PWA маніфест
+├── sw.js           # Service Worker (офлайн)
+├── icon-192.png    # Іконка PWA
+└── icon-512.png    # Іконка PWA (велика)
+```
+
+---
+
+## 📲 Встановлення на телефон (Android)
+
+1. Відкрий [cheat-sheet-for-javascript.netlify.app](https://cheat-sheet-for-javascript.netlify.app) в Chrome
+2. Натисни `⋮` → **"Додати на головний екран"**
+3. Готово — іконка з'явиться на робочому столі
+
+---
+
+## 💻 Запуск локально
+
+```bash
+git clone https://github.com/ViktorPro1/cheat-sheet-js.git
+cd cheat-sheet-js
+# Відкрити index.html в браузері
+# або запустити live server у VS Code
+```
+
+---
+
+## 👨‍💻 Автор
+
+**Viktor Pro** — самонавчений фронтенд розробник
+
+🌐 [Портфоліо](https://my-profile-portfolio-resume-contacts.netlify.app)

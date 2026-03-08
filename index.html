@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f0f1a" />
+    <meta name="description" content="JavaScript довідник для фронтенд розробника" />
+    <title>JS Довідник</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Unbounded:wght@400;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">JS Довідник</div>
+        <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Пошук команди..." autocomplete="off" />
+        </div>
+    </header>
+
+    <div class="app">
+        <nav id="sidebar">
+            <div class="nav-section">
+                <div class="nav-title">Початок</div>
+                <a class="nav-item active" data-section="home">🏠 Головна</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">DOM</div>
+                <a class="nav-item" data-section="dom-select">🎯 Пошук елементів</a>
+                <a class="nav-item" data-section="dom-change">✏️ Зміна елементів</a>
+                <a class="nav-item" data-section="dom-create">➕ Створення/видалення</a>
+                <a class="nav-item" data-section="dom-style">🎨 Стилі та класи</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Події</div>
+                <a class="nav-item" data-section="events-basic">⚡ Основи подій</a>
+                <a class="nav-item" data-section="events-types">📋 Типи подій</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Змінні та типи</div>
+                <a class="nav-item" data-section="vars">📦 Змінні</a>
+                <a class="nav-item" data-section="types">🔢 Типи даних</a>
+                <a class="nav-item" data-section="conditions">🔀 Умови</a>
+                <a class="nav-item" data-section="loops">🔄 Цикли</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Функції</div>
+                <a class="nav-item" data-section="functions">⚙️ Функції</a>
+                <a class="nav-item" data-section="arrow">➡️ Стрілкові функції</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Масиви та об'єкти</div>
+                <a class="nav-item" data-section="arrays">📚 Масиви</a>
+                <a class="nav-item" data-section="array-methods">🛠️ Методи масивів</a>
+                <a class="nav-item" data-section="objects">🗂️ Об'єкти</a>
+                <a class="nav-item" data-section="strings">🔤 Рядки</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Асинхронність</div>
+                <a class="nav-item" data-section="fetch">🌐 fetch / API</a>
+                <a class="nav-item" data-section="async">⏳ async / await</a>
+                <a class="nav-item" data-section="promise">🤝 Promise</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-title">Браузер</div>
+                <a class="nav-item" data-section="localstorage">💾 localStorage</a>
+                <a class="nav-item" data-section="console">🖥️ console</a>
+                <a class="nav-item" data-section="window">🪟 window</a>
+                <a class="nav-item" data-section="forms">📝 Форми</a>
+            </div>
+        </nav>
+
+        <main id="mainContent">
+
+            <!-- SEARCH RESULTS -->
+            <div id="searchResults" class="search-results section">
+                <div class="section-title">Результати пошуку</div>
+                <div class="section-desc" id="searchDesc"></div>
+                <div id="searchList"></div>
+            </div>
+
+            <!-- HOME -->
+            <div class="section active" id="section-home">
+                <div class="section-title">JS Довідник</div>
+                <div class="section-desc">Повний словник команд JavaScript для фронтенд розробника. Натисни на розділ
+                    щоб почати.</div>
+                <div class="home-grid">
+                    <div class="home-card" onclick="showSection('dom-select')">
+                        <div class="home-card-icon">🎯</div>
+                        <div class="home-card-title">DOM пошук</div>
+                        <div class="home-card-count">6 команд</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('dom-change')">
+                        <div class="home-card-icon">✏️</div>
+                        <div class="home-card-title">Зміна елементів</div>
+                        <div class="home-card-count">8 команд</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('dom-create')">
+                        <div class="home-card-icon">➕</div>
+                        <div class="home-card-title">Створення/видалення</div>
+                        <div class="home-card-count">5 команд</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('dom-style')">
+                        <div class="home-card-icon">🎨</div>
+                        <div class="home-card-title">Стилі та класи</div>
+                        <div class="home-card-count">6 команд</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('events-basic')">
+                        <div class="home-card-icon">⚡</div>
+                        <div class="home-card-title">Події</div>
+                        <div class="home-card-count">5 команд</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('vars')">
+                        <div class="home-card-icon">📦</div>
+                        <div class="home-card-title">Змінні</div>
+                        <div class="home-card-count">4 команди</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('functions')">
+                        <div class="home-card-icon">⚙️</div>
+                        <div class="home-card-title">Функції</div>
+                        <div class="home-card-count">5 команд</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('array-methods')">
+                        <div class="home-card-icon">🛠️</div>
+                        <div class="home-card-title">Методи масивів</div>
+                        <div class="home-card-count">10 команд</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('fetch')">
+                        <div class="home-card-icon">🌐</div>
+                        <div class="home-card-title">fetch / API</div>
+                        <div class="home-card-count">4 команди</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('async')">
+                        <div class="home-card-icon">⏳</div>
+                        <div class="home-card-title">async/await</div>
+                        <div class="home-card-count">4 команди</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('localstorage')">
+                        <div class="home-card-icon">💾</div>
+                        <div class="home-card-title">localStorage</div>
+                        <div class="home-card-count">5 команд</div>
+                    </div>
+                    <div class="home-card" onclick="showSection('strings')">
+                        <div class="home-card-icon">🔤</div>
+                        <div class="home-card-title">Рядки</div>
+                        <div class="home-card-count">10 команд</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOM SELECT -->
+            <div class="section" id="section-dom-select">
+                <div class="section-title">🎯 Пошук елементів</div>
+                <div class="section-desc">Команди для знаходження HTML-елементів на сторінці. DOM (Document Object
+                    Model) — це вся твоя HTML сторінка як об'єкт з яким JS може взаємодіяти.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <div class="card-info">
+                            <div class="card-name">document.getElementById()</div>
+                            <div class="card-short">Знайти один елемент по id</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p><strong>Що робить:</strong> шукає в документі елемент з конкретним id і повертає його.</p>
+                        <p><strong>Коли використовувати:</strong> коли треба отримати конкретний унікальний елемент.</p>
+                        <pre><code><span class="cm">// В HTML є: &lt;button id="myBtn"&gt;Натисни&lt;/button&gt;</span>
+
+<span class="kw">const</span> btn = document.<span class="fn">getElementById</span>(<span class="str">'myBtn'</span>)
+<span class="cm">// тепер btn — це наша кнопка</span>
+console.<span class="fn">log</span>(btn) <span class="cm">// побачиш кнопку в консолі</span></code></pre>
+                        <div class="tip"><strong>Пам'ятай:</strong> id на сторінці має бути унікальним — тільки один
+                            елемент з таким id.</div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <div class="card-info">
+                            <div class="card-name">document.querySelector()</div>
+                            <div class="card-short">Знайти перший елемент по CSS-селектору</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p><strong>Що робить:</strong> знаходить перший елемент який підходить під CSS-селектор.
+                            Найуніверсальніший спосіб пошуку.</p>
+                        <pre><code><span class="cm">// По тегу</span>
+<span class="kw">const</span> title = document.<span class="fn">querySelector</span>(<span class="str">'h1'</span>)
+
+<span class="cm">// По класу (крапка перед назвою)</span>
+<span class="kw">const</span> card = document.<span class="fn">querySelector</span>(<span class="str">'.card'</span>)
+
+<span class="cm">// По id (решітка перед назвою)</span>
+<span class="kw">const</span> btn = document.<span class="fn">querySelector</span>(<span class="str">'#myBtn'</span>)
+
+<span class="cm">// Вкладений елемент</span>
+<span class="kw">const</span> link = document.<span class="fn">querySelector</span>(<span class="str">'.nav a'</span>)</code></pre>
+                        <div class="tip"><strong>Порада:</strong> querySelector — найзручніший метод, бо використовує ті
+                            самі CSS-селектори що ти вже знаєш.</div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <div class="card-info">
+                            <div class="card-name">document.querySelectorAll()</div>
+                            <div class="card-short">Знайти всі елементи по CSS-селектору</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p><strong>Що робить:</strong> повертає список всіх елементів які підходять під селектор.</p>
+                        <pre><code><span class="cm">// Знайти всі параграфи</span>
+<span class="kw">const</span> paragraphs = document.<span class="fn">querySelectorAll</span>(<span class="str">'p'</span>)
+
+<span class="cm">// Знайти всі елементи з класом .item</span>
+<span class="kw">const</span> items = document.<span class="fn">querySelectorAll</span>(<span class="str">'.item'</span>)
+
+<span class="cm">// Пройтись по кожному</span>
+items.<span class="fn">forEach</span>(<span class="kw">function</span>(item) {
+  console.<span class="fn">log</span>(item)
+})</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <div class="card-info">
+                            <div class="card-name">document.getElementsByClassName()</div>
+                            <div class="card-short">Знайти елементи по класу</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p><strong>Що робить:</strong> повертає всі елементи з вказаним CSS-класом.</p>
+                        <pre><code><span class="kw">const</span> cards = document.<span class="fn">getElementsByClassName</span>(<span class="str">'card'</span>)
+<span class="cm">// Без крапки! Просто назва класу</span></code></pre>
+                        <div class="tip"><strong>Порада:</strong> querySelector('.card') робить те саме, але зручніше.
+                            Цей метод — старіший варіант.</div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔍</div>
+                        <div class="card-info">
+                            <div class="card-name">element.closest()</div>
+                            <div class="card-short">Знайти найближчого батька по селектору</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p><strong>Що робить:</strong> шукає вгору по дереву DOM і знаходить найближчий батьківський
+                            елемент що підходить під селектор.</p>
+                        <pre><code><span class="cm">// Натиснули на кнопку всередині картки</span>
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, <span class="kw">function</span>(e) {
+  <span class="kw">const</span> card = e.target.<span class="fn">closest</span>(<span class="str">'.card'</span>)
+  <span class="cm">// card — батьківська картка кнопки</span>
+})</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOM CHANGE -->
+            <div class="section" id="section-dom-change">
+                <div class="section-title">✏️ Зміна елементів</div>
+                <div class="section-desc">Після того як знайшов елемент — можна змінювати його вміст, атрибути та інше.
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <div class="card-info">
+                            <div class="card-name">element.textContent</div>
+                            <div class="card-short">Змінити або прочитати текст елемента</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p><strong>Що робить:</strong> читає або змінює текстовий вміст елемента (без HTML тегів).</p>
+                        <pre><code><span class="kw">const</span> title = document.<span class="fn">querySelector</span>(<span class="str">'h1'</span>)
+
+<span class="cm">// Прочитати текст</span>
+console.<span class="fn">log</span>(title.textContent)
+
+<span class="cm">// Змінити текст</span>
+title.textContent = <span class="str">'Новий заголовок'</span></code></pre>
+                        <div class="tip"><strong>Безпечно:</strong> textContent не виконує HTML теги — тільки текст.
+                            Використовуй коли вставляєш текст від користувача.</div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🏷️</div>
+                        <div class="card-info">
+                            <div class="card-name">element.innerHTML</div>
+                            <div class="card-short">Змінити HTML вміст елемента</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p><strong>Що робить:</strong> читає або повністю замінює HTML-вміст елемента разом з тегами.
+                        </p>
+                        <pre><code><span class="kw">const</span> box = document.<span class="fn">querySelector</span>(<span class="str">'.box'</span>)
+
+<span class="cm">// Вставити HTML</span>
+box.innerHTML = <span class="str">'&lt;strong&gt;Жирний текст&lt;/strong&gt;'</span>
+
+<span class="cm">// Додати список</span>
+box.innerHTML = <span class="str">`
+  &lt;ul&gt;
+    &lt;li&gt;Пункт 1&lt;/li&gt;
+    &lt;li&gt;Пункт 2&lt;/li&gt;
+  &lt;/ul&gt;
+`</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔗</div>
+                        <div class="card-info">
+                            <div class="card-name">element.setAttribute() / getAttribute()</div>
+                            <div class="card-short">Встановити або прочитати атрибут</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <pre><code><span class="kw">const</span> link = document.<span class="fn">querySelector</span>(<span class="str">'a'</span>)
+
+<span class="cm">// Прочитати атрибут</span>
+<span class="kw">const</span> href = link.<span class="fn">getAttribute</span>(<span class="str">'href'</span>)
+
+<span class="cm">// Встановити атрибут</span>
+link.<span class="fn">setAttribute</span>(<span class="str">'href'</span>, <span class="str">'https://google.com'</span>)
+
+<span class="cm">// Для src картинки</span>
+<span class="kw">const</span> img = document.<span class="fn">querySelector</span>(<span class="str">'img'</span>)
+img.<span class="fn">setAttribute</span>(<span class="str">'src'</span>, <span class="str">'new-photo.jpg'</span>)</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">💎</div>
+                        <div class="card-info">
+                            <div class="card-name">element.value</div>
+                            <div class="card-short">Прочитати або змінити значення input</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p><strong>Що робить:</strong> отримує або встановлює те що введено в поле форми.</p>
+                        <pre><code><span class="kw">const</span> input = document.<span class="fn">querySelector</span>(<span class="str">'#email'</span>)
+
+<span class="cm">// Прочитати що ввів користувач</span>
+<span class="kw">const</span> email = input.value
+console.<span class="fn">log</span>(email)
+
+<span class="cm">// Очистити поле</span>
+input.value = <span class="str">''</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOM CREATE -->
+            <div class="section" id="section-dom-create">
+                <div class="section-title">➕ Створення та видалення</div>
+                <div class="section-desc">Команди для динамічного створення нових елементів або видалення існуючих.
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🆕</div>
+                        <div class="card-info">
+                            <div class="card-name">document.createElement()</div>
+                            <div class="card-short">Створити новий HTML елемент</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <pre><code><span class="cm">// Створити новий параграф</span>
+<span class="kw">const</span> p = document.<span class="fn">createElement</span>(<span class="str">'p'</span>)
+p.textContent = <span class="str">'Це новий параграф'</span>
+
+<span class="cm">// Додати його на сторінку</span>
+document.body.<span class="fn">appendChild</span>(p)
+
+<span class="cm">// Або в конкретний контейнер</span>
+<span class="kw">const</span> list = document.<span class="fn">querySelector</span>(<span class="str">'ul'</span>)
+<span class="kw">const</span> li = document.<span class="fn">createElement</span>(<span class="str">'li'</span>)
+li.textContent = <span class="str">'Новий пункт'</span>
+list.<span class="fn">appendChild</span>(li)</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🗑️</div>
+                        <div class="card-info">
+                            <div class="card-name">element.remove()</div>
+                            <div class="card-short">Видалити елемент зі сторінки</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <pre><code><span class="kw">const</span> card = document.<span class="fn">querySelector</span>(<span class="str">'.card'</span>)
+card.<span class="fn">remove</span>() <span class="cm">// просто видалити</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DOM STYLE -->
+            <div class="section" id="section-dom-style">
+                <div class="section-title">🎨 Стилі та класи</div>
+                <div class="section-desc">Зміна зовнішнього вигляду елементів через JS.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🎨</div>
+                        <div class="card-info">
+                            <div class="card-name">element.classList</div>
+                            <div class="card-short">Додати, видалити або переключити CSS клас</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <p>Найпоширеніший спосіб змінювати вигляд — через CSS класи.</p>
+                        <pre><code><span class="kw">const</span> menu = document.<span class="fn">querySelector</span>(<span class="str">'.menu'</span>)
+
+<span class="cm">// Додати клас</span>
+menu.classList.<span class="fn">add</span>(<span class="str">'active'</span>)
+
+<span class="cm">// Видалити клас</span>
+menu.classList.<span class="fn">remove</span>(<span class="str">'active'</span>)
+
+<span class="cm">// Переключити (є — видалить, немає — додасть)</span>
+menu.classList.<span class="fn">toggle</span>(<span class="str">'open'</span>)
+
+<span class="cm">// Перевірити чи є клас</span>
+<span class="kw">const</span> isOpen = menu.classList.<span class="fn">contains</span>(<span class="str">'open'</span>)
+console.<span class="fn">log</span>(isOpen) <span class="cm">// true або false</span></code></pre>
+                        <div class="tip"><strong>toggle</strong> — ідеальний для бургер-меню, акордеонів, і всього що
+                            відкривається/закривається.</div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">💅</div>
+                        <div class="card-info">
+                            <div class="card-name">element.style</div>
+                            <div class="card-short">Змінити CSS стиль напряму</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-dom">DOM</span>
+                        <pre><code><span class="kw">const</span> box = document.<span class="fn">querySelector</span>(<span class="str">'.box'</span>)
+
+box.style.color = <span class="str">'red'</span>
+box.style.backgroundColor = <span class="str">'#000'</span> <span class="cm">// camelCase!</span>
+box.style.display = <span class="str">'none'</span>     <span class="cm">// приховати</span>
+box.style.display = <span class="str">'block'</span>    <span class="cm">// показати</span></code></pre>
+                        <div class="tip"><strong>Увага:</strong> CSS пишуть <code>background-color</code>, а в JS —
+                            <code>backgroundColor</code> (camelCase).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENTS BASIC -->
+            <div class="section" id="section-events-basic">
+                <div class="section-title">⚡ Основи подій</div>
+                <div class="section-desc">Події — це сигнали про те що щось сталось на сторінці. JS "слухає" ці сигнали
+                    і реагує на них.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">👂</div>
+                        <div class="card-info">
+                            <div class="card-name">addEventListener()</div>
+                            <div class="card-short">Підписатись на подію елемента</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-event">Подія</span>
+                        <p>Основна команда для реакції на дії користувача.</p>
+                        <pre><code><span class="kw">const</span> btn = document.<span class="fn">querySelector</span>(<span class="str">'#btn'</span>)
+
+<span class="cm">// Синтаксис: елемент.addEventListener(подія, функція)</span>
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, <span class="kw">function</span>() {
+  console.<span class="fn">log</span>(<span class="str">'Натиснули!'</span>)
+})
+
+<span class="cm">// Або стрілкова функція (коротше)</span>
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, () => {
+  console.<span class="fn">log</span>(<span class="str">'Натиснули!'</span>)
+})</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-info">
+                            <div class="card-name">event.target</div>
+                            <div class="card-short">Елемент на який натиснули</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-event">Подія</span>
+                        <p><strong>event</strong> — це об'єкт з інформацією про подію. <strong>event.target</strong> —
+                            конкретний елемент на який натиснули.</p>
+                        <pre><code>btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, <span class="kw">function</span>(event) {
+  console.<span class="fn">log</span>(event.target)       <span class="cm">// сам елемент</span>
+  console.<span class="fn">log</span>(event.target.textContent) <span class="cm">// його текст</span>
+})</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🚫</div>
+                        <div class="card-info">
+                            <div class="card-name">event.preventDefault()</div>
+                            <div class="card-short">Скасувати стандартну поведінку браузера</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-event">Подія</span>
+                        <p>Зупиняє стандартну дію браузера — наприклад щоб форма не перезавантажувала сторінку.</p>
+                        <pre><code><span class="kw">const</span> form = document.<span class="fn">querySelector</span>(<span class="str">'form'</span>)
+
+form.<span class="fn">addEventListener</span>(<span class="str">'submit'</span>, <span class="kw">function</span>(event) {
+  event.<span class="fn">preventDefault</span>() <span class="cm">// зупинити перезавантаження</span>
+  console.<span class="fn">log</span>(<span class="str">'Форма відправлена без перезавантаження!'</span>)
+})
+
+<span class="cm">// Або для посилання</span>
+link.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, (e) => {
+  e.<span class="fn">preventDefault</span>() <span class="cm">// не переходити по посиланню</span>
+})</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENTS TYPES -->
+            <div class="section" id="section-events-types">
+                <div class="section-title">📋 Типи подій</div>
+                <div class="section-desc">Всі типи подій які можна слухати через addEventListener.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🖱️</div>
+                        <div class="card-info">
+                            <div class="card-name">Події миші</div>
+                            <div class="card-short">click, dblclick, mouseover, mouseout, mousemove</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-event">Подія</span>
+                        <pre><code>el.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, fn)      <span class="cm">// одиночний клік</span>
+el.<span class="fn">addEventListener</span>(<span class="str">'dblclick'</span>, fn)   <span class="cm">// подвійний клік</span>
+el.<span class="fn">addEventListener</span>(<span class="str">'mouseover'</span>, fn)  <span class="cm">// навів мишку</span>
+el.<span class="fn">addEventListener</span>(<span class="str">'mouseout'</span>, fn)   <span class="cm">// прибрав мишку</span>
+el.<span class="fn">addEventListener</span>(<span class="str">'mousemove'</span>, fn)  <span class="cm">// рух миші</span>
+el.<span class="fn">addEventListener</span>(<span class="str">'contextmenu'</span>, fn) <span class="cm">// права кнопка</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">⌨️</div>
+                        <div class="card-info">
+                            <div class="card-name">Події клавіатури</div>
+                            <div class="card-short">keydown, keyup, keypress</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-event">Подія</span>
+                        <pre><code>document.<span class="fn">addEventListener</span>(<span class="str">'keydown'</span>, <span class="kw">function</span>(e) {
+  console.<span class="fn">log</span>(e.key) <span class="cm">// яку клавішу натиснули</span>
+
+  <span class="kw">if</span> (e.key === <span class="str">'Escape'</span>) {
+    <span class="cm">// закрити модальне вікно</span>
+  }
+  <span class="kw">if</span> (e.key === <span class="str">'Enter'</span>) {
+    <span class="cm">// підтвердити дію</span>
+  }
+})</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <div class="card-info">
+                            <div class="card-name">Події форм та input</div>
+                            <div class="card-short">input, change, submit, focus, blur</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-event">Подія</span>
+                        <pre><code><span class="kw">const</span> inp = document.<span class="fn">querySelector</span>(<span class="str">'input'</span>)
+
+inp.<span class="fn">addEventListener</span>(<span class="str">'input'</span>, (e) => {
+  console.<span class="fn">log</span>(e.target.value) <span class="cm">// кожен введений символ</span>
+})
+
+inp.<span class="fn">addEventListener</span>(<span class="str">'focus'</span>, () => {
+  <span class="cm">// коли поле отримало фокус (клацнули в нього)</span>
+})
+
+inp.<span class="fn">addEventListener</span>(<span class="str">'blur'</span>, () => {
+  <span class="cm">// коли поле втратило фокус (клацнули деінде)</span>
+})</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📄</div>
+                        <div class="card-info">
+                            <div class="card-name">Події сторінки</div>
+                            <div class="card-short">DOMContentLoaded, load, scroll, resize</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-event">Подія</span>
+                        <pre><code><span class="cm">// Сторінка завантажилась</span>
+document.<span class="fn">addEventListener</span>(<span class="str">'DOMContentLoaded'</span>, () => {
+  <span class="cm">// весь JS запускати тут</span>
+})
+
+<span class="cm">// Прокрутка</span>
+window.<span class="fn">addEventListener</span>(<span class="str">'scroll'</span>, () => {
+  console.<span class="fn">log</span>(window.scrollY) <span class="cm">// скільки прокрутили</span>
+})
+
+<span class="cm">// Зміна розміру вікна</span>
+window.<span class="fn">addEventListener</span>(<span class="str">'resize'</span>, () => {
+  console.<span class="fn">log</span>(window.innerWidth)
+})</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VARS -->
+            <div class="section" id="section-vars">
+                <div class="section-title">📦 Змінні</div>
+                <div class="section-desc">Змінні — це контейнери для зберігання даних. Уяви коробку з підписом — кладеш
+                    туди щось і береш коли треба.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📦</div>
+                        <div class="card-info">
+                            <div class="card-name">const</div>
+                            <div class="card-short">Змінна яку не можна перевизначити</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="kw">const</span> name = <span class="str">'Віктор'</span>
+<span class="kw">const</span> age = <span class="num">30</span>
+<span class="kw">const</span> btn = document.<span class="fn">querySelector</span>(<span class="str">'#btn'</span>)
+
+<span class="cm">// name = 'Інше' — ПОМИЛКА! const не перевизначається</span></code></pre>
+                        <div class="tip"><strong>Правило:</strong> використовуй const за замовчуванням. Переходь на let
+                            тільки якщо знаєш що значення зміниться.</div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔄</div>
+                        <div class="card-info">
+                            <div class="card-name">let</div>
+                            <div class="card-short">Змінна яку можна перевизначити</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="kw">let</span> count = <span class="num">0</span>
+count = count + <span class="num">1</span> <span class="cm">// тепер count = 1</span>
+count++           <span class="cm">// тепер count = 2</span>
+
+<span class="kw">let</span> isOpen = <span class="kw">false</span>
+isOpen = <span class="kw">true</span>    <span class="cm">// можна змінити</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔤</div>
+                        <div class="card-info">
+                            <div class="card-name">Шаблонні рядки (template literals)</div>
+                            <div class="card-short">Вставляти змінні в текст</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="kw">const</span> name = <span class="str">'Віктор'</span>
+<span class="kw">const</span> age = <span class="num">30</span>
+
+<span class="cm">// Старий спосіб (незручно)</span>
+<span class="kw">const</span> text1 = <span class="str">'Привіт, '</span> + name + <span class="str">', тобі '</span> + age
+
+<span class="cm">// Новий спосіб (зворотні лапки + ${})</span>
+<span class="kw">const</span> text2 = <span class="str">`Привіт, ${name}, тобі ${age} років`</span>
+
+<span class="cm">// Можна навіть вираз вставляти</span>
+<span class="kw">const</span> text3 = <span class="str">`Наступного року буде ${age + <span class="num">1</span>}`</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TYPES -->
+            <div class="section" id="section-types">
+                <div class="section-title">🔢 Типи даних</div>
+                <div class="section-desc">JavaScript має кілька типів даних. Важливо розуміти яке значення якого типу.
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔢</div>
+                        <div class="card-info">
+                            <div class="card-name">Основні типи даних</div>
+                            <div class="card-short">string, number, boolean, null, undefined</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="cm">// Рядок (string) — текст в лапках</span>
+<span class="kw">const</span> name = <span class="str">'Віктор'</span>
+<span class="kw">const</span> city = <span class="str">"Київ"</span>
+
+<span class="cm">// Число (number)</span>
+<span class="kw">const</span> age = <span class="num">30</span>
+<span class="kw">const</span> price = <span class="num">99.99</span>
+
+<span class="cm">// Булеве (boolean) — тільки true або false</span>
+<span class="kw">const</span> isLoggedIn = <span class="kw">true</span>
+<span class="kw">const</span> isAdmin = <span class="kw">false</span>
+
+<span class="cm">// null — спеціально порожнє значення</span>
+<span class="kw">const</span> user = <span class="kw">null</span>
+
+<span class="cm">// undefined — змінна є але значення не присвоєне</span>
+<span class="kw">let</span> result
+console.<span class="fn">log</span>(result) <span class="cm">// undefined</span>
+
+<span class="cm">// Перевірити тип</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> name)  <span class="cm">// "string"</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> age)   <span class="cm">// "number"</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONDITIONS -->
+            <div class="section" id="section-conditions">
+                <div class="section-title">🔀 Умови</div>
+                <div class="section-desc">Умовні оператори дозволяють виконувати різний код залежно від ситуації.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔀</div>
+                        <div class="card-info">
+                            <div class="card-name">if / else if / else</div>
+                            <div class="card-short">Якщо ... інакше якщо ... інакше</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="kw">const</span> age = <span class="num">20</span>
+
+<span class="kw">if</span> (age >= <span class="num">18</span>) {
+  console.<span class="fn">log</span>(<span class="str">'Дорослий'</span>)
+} <span class="kw">else if</span> (age >= <span class="num">13</span>) {
+  console.<span class="fn">log</span>(<span class="str">'Підліток'</span>)
+} <span class="kw">else</span> {
+  console.<span class="fn">log</span>(<span class="str">'Дитина'</span>)
+}
+
+<span class="cm">// Оператори порівняння</span>
+<span class="cm">// ===  точна рівність (значення і тип)</span>
+<span class="cm">// !==  не рівно</span>
+<span class="cm">// >    більше</span>
+<span class="cm">// <    менше</span>
+<span class="cm">// >=   більше або рівно</span>
+<span class="cm">// &&   і (AND)</span>
+<span class="cm">// ||   або (OR)</span>
+<span class="cm">// !    не (NOT)</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">❓</div>
+                        <div class="card-info">
+                            <div class="card-name">Тернарний оператор</div>
+                            <div class="card-short">Коротка форма if/else в один рядок</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="cm">// умова ? якщо true : якщо false</span>
+<span class="kw">const</span> age = <span class="num">20</span>
+<span class="kw">const</span> status = age >= <span class="num">18</span> ? <span class="str">'дорослий'</span> : <span class="str">'неповнолітній'</span>
+
+<span class="cm">// Зручно для JSX в React</span>
+<span class="cm">// {isLoggedIn ? 'Вийти' : 'Увійти'}</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOOPS -->
+            <div class="section" id="section-loops">
+                <div class="section-title">🔄 Цикли</div>
+                <div class="section-desc">Цикли повторюють код певну кількість разів або поки виконується умова.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔄</div>
+                        <div class="card-info">
+                            <div class="card-name">for</div>
+                            <div class="card-short">Цикл з лічильником</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="cm">// for (початок; умова; крок)</span>
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < <span class="num">5</span>; i++) {
+  console.<span class="fn">log</span>(i) <span class="cm">// 0, 1, 2, 3, 4</span>
+}
+
+<span class="cm">// Перебрати масив</span>
+<span class="kw">const</span> fruits = [<span class="str">'яблуко'</span>, <span class="str">'банан'</span>, <span class="str">'груша'</span>]
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < fruits.length; i++) {
+  console.<span class="fn">log</span>(fruits[i])
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔁</div>
+                        <div class="card-info">
+                            <div class="card-name">for...of</div>
+                            <div class="card-short">Зручний перебір масиву</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="kw">const</span> fruits = [<span class="str">'яблуко'</span>, <span class="str">'банан'</span>, <span class="str">'груша'</span>]
+
+<span class="kw">for</span> (<span class="kw">const</span> fruit <span class="kw">of</span> fruits) {
+  console.<span class="fn">log</span>(fruit) <span class="cm">// яблуко, банан, груша</span>
+}</code></pre>
+                        <div class="tip">Простіший і читабельніший за звичайний for для масивів.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FUNCTIONS -->
+            <div class="section" id="section-functions">
+                <div class="section-title">⚙️ Функції</div>
+                <div class="section-desc">Функція — це блок коду з назвою. Написав один раз — використовуй скільки
+                    завгодно разів.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">⚙️</div>
+                        <div class="card-info">
+                            <div class="card-name">function</div>
+                            <div class="card-short">Оголошення функції</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="cm">// Оголошення</span>
+<span class="kw">function</span> <span class="fn">greet</span>(name) {
+  console.<span class="fn">log</span>(<span class="str">`Привіт, ${name}!`</span>)
+}
+
+<span class="cm">// Виклик</span>
+<span class="fn">greet</span>(<span class="str">'Віктор'</span>) <span class="cm">// Привіт, Віктор!</span>
+<span class="fn">greet</span>(<span class="str">'Олег'</span>)   <span class="cm">// Привіт, Олег!</span>
+
+<span class="cm">// Функція з return</span>
+<span class="kw">function</span> <span class="fn">add</span>(a, b) {
+  <span class="kw">return</span> a + b
+}
+
+<span class="kw">const</span> sum = <span class="fn">add</span>(<span class="num">5</span>, <span class="num">3</span>) <span class="cm">// sum = 8</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🎰</div>
+                        <div class="card-info">
+                            <div class="card-name">setTimeout / setInterval</div>
+                            <div class="card-short">Затримка і повторення коду</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="cm">// Виконати один раз через 2 секунди</span>
+<span class="fn">setTimeout</span>(() => {
+  console.<span class="fn">log</span>(<span class="str">'Через 2 секунди'</span>)
+}, <span class="num">2000</span>) <span class="cm">// мілісекунди</span>
+
+<span class="cm">// Повторювати кожні 1 секунду</span>
+<span class="kw">const</span> interval = <span class="fn">setInterval</span>(() => {
+  console.<span class="fn">log</span>(<span class="str">'Кожну секунду'</span>)
+}, <span class="num">1000</span>)
+
+<span class="cm">// Зупинити повторення</span>
+<span class="fn">clearInterval</span>(interval)</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARROW -->
+            <div class="section" id="section-arrow">
+                <div class="section-title">➡️ Стрілкові функції</div>
+                <div class="section-desc">Коротший спосіб записати функцію. Дуже часто використовується в сучасному JS
+                    та React.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">➡️</div>
+                        <div class="card-info">
+                            <div class="card-name">Arrow function (=>)</div>
+                            <div class="card-short">Коротший запис функції</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="cm">// Звичайна функція</span>
+<span class="kw">function</span> <span class="fn">add</span>(a, b) {
+  <span class="kw">return</span> a + b
+}
+
+<span class="cm">// Та сама функція стрілкою</span>
+<span class="kw">const</span> <span class="fn">add</span> = (a, b) => {
+  <span class="kw">return</span> a + b
+}
+
+<span class="cm">// Ще коротше (якщо одна строка)</span>
+<span class="kw">const</span> <span class="fn">add</span> = (a, b) => a + b
+
+<span class="cm">// Один параметр — дужки необов'язкові</span>
+<span class="kw">const</span> <span class="fn">double</span> = n => n * <span class="num">2</span>
+
+<span class="cm">// Без параметрів</span>
+<span class="kw">const</span> <span class="fn">sayHi</span> = () => console.<span class="fn">log</span>(<span class="str">'Привіт!'</span>)</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARRAYS -->
+            <div class="section" id="section-arrays">
+                <div class="section-title">📚 Масиви</div>
+                <div class="section-desc">Масив — це список значень в одній змінній. Уяви пронумерований список.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📚</div>
+                        <div class="card-info">
+                            <div class="card-name">Основи масивів</div>
+                            <div class="card-short">Створення, доступ, зміна</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-array">Масив</span>
+                        <pre><code><span class="cm">// Створення масиву</span>
+<span class="kw">const</span> fruits = [<span class="str">'яблуко'</span>, <span class="str">'банан'</span>, <span class="str">'груша'</span>]
+
+<span class="cm">// Доступ по індексу (нумерація з 0!)</span>
+console.<span class="fn">log</span>(fruits[<span class="num">0</span>]) <span class="cm">// 'яблуко'</span>
+console.<span class="fn">log</span>(fruits[<span class="num">1</span>]) <span class="cm">// 'банан'</span>
+
+<span class="cm">// Кількість елементів</span>
+console.<span class="fn">log</span>(fruits.length) <span class="cm">// 3</span>
+
+<span class="cm">// Останній елемент</span>
+console.<span class="fn">log</span>(fruits[fruits.length - <span class="num">1</span>]) <span class="cm">// 'груша'</span>
+
+<span class="cm">// Масив об'єктів (часто в React)</span>
+<span class="kw">const</span> users = [
+  { name: <span class="str">'Віктор'</span>, age: <span class="num">30</span> },
+  { name: <span class="str">'Олег'</span>, age: <span class="num">25</span> }
+]</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARRAY METHODS -->
+            <div class="section" id="section-array-methods">
+                <div class="section-title">🛠️ Методи масивів</div>
+                <div class="section-desc">Вбудовані команди для роботи з масивами. Це те що найчастіше використовується
+                    в React та сучасному JS.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🗺️</div>
+                        <div class="card-info">
+                            <div class="card-name">.map()</div>
+                            <div class="card-short">Перетворити кожен елемент масиву</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-array">Масив</span>
+                        <p>Проходить по кожному елементу і повертає <strong>новий масив</strong> з результатами.</p>
+                        <pre><code><span class="kw">const</span> numbers = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>]
+
+<span class="cm">// Помножити кожне число на 2</span>
+<span class="kw">const</span> doubled = numbers.<span class="fn">map</span>(n => n * <span class="num">2</span>)
+<span class="cm">// doubled = [2, 4, 6, 8]</span>
+
+<span class="cm">// В React — рендер списку</span>
+<span class="kw">const</span> items = [<span class="str">'React'</span>, <span class="str">'Vue'</span>, <span class="str">'Angular'</span>]
+<span class="cm">// items.map(item => &lt;li&gt;{item}&lt;/li&gt;)</span></code></pre>
+                        <div class="tip"><strong>map</strong> — один з найважливіших методів в React. Використовуй для
+                            рендеру списків.</div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔽</div>
+                        <div class="card-info">
+                            <div class="card-name">.filter()</div>
+                            <div class="card-short">Відфільтрувати елементи по умові</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-array">Масив</span>
+                        <p>Повертає новий масив тільки з елементами які відповідають умові.</p>
+                        <pre><code><span class="kw">const</span> numbers = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>]
+
+<span class="cm">// Тільки парні числа</span>
+<span class="kw">const</span> even = numbers.<span class="fn">filter</span>(n => n % <span class="num">2</span> === <span class="num">0</span>)
+<span class="cm">// even = [2, 4, 6]</span>
+
+<span class="cm">// Фільтр користувачів</span>
+<span class="kw">const</span> users = [{name: <span class="str">'Вася'</span>, active: <span class="kw">true</span>}, {name: <span class="str">'Петя'</span>, active: <span class="kw">false</span>}]
+<span class="kw">const</span> active = users.<span class="fn">filter</span>(u => u.active)
+<span class="cm">// Тільки активні користувачі</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔎</div>
+                        <div class="card-info">
+                            <div class="card-name">.find()</div>
+                            <div class="card-short">Знайти перший елемент по умові</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-array">Масив</span>
+                        <pre><code><span class="kw">const</span> users = [
+  { id: <span class="num">1</span>, name: <span class="str">'Вася'</span> },
+  { id: <span class="num">2</span>, name: <span class="str">'Петя'</span> }
+]
+
+<span class="kw">const</span> user = users.<span class="fn">find</span>(u => u.id === <span class="num">2</span>)
+<span class="cm">// user = { id: 2, name: 'Петя' }</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">➕</div>
+                        <div class="card-info">
+                            <div class="card-name">.push() / .pop() / .shift() / .unshift()</div>
+                            <div class="card-short">Додавати і видаляти елементи</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-array">Масив</span>
+                        <pre><code><span class="kw">const</span> arr = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]
+
+arr.<span class="fn">push</span>(<span class="num">4</span>)      <span class="cm">// [1, 2, 3, 4] — додати в кінець</span>
+arr.<span class="fn">pop</span>()       <span class="cm">// [1, 2, 3] — видалити з кінця</span>
+arr.<span class="fn">unshift</span>(<span class="num">0</span>) <span class="cm">// [0, 1, 2, 3] — додати на початок</span>
+arr.<span class="fn">shift</span>()    <span class="cm">// [1, 2, 3] — видалити з початку</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔁</div>
+                        <div class="card-info">
+                            <div class="card-name">.forEach()</div>
+                            <div class="card-short">Пройтись по кожному елементу</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-array">Масив</span>
+                        <pre><code><span class="kw">const</span> fruits = [<span class="str">'яблуко'</span>, <span class="str">'банан'</span>, <span class="str">'груша'</span>]
+
+fruits.<span class="fn">forEach</span>((fruit, index) => {
+  console.<span class="fn">log</span>(<span class="str">`${index}: ${fruit}`</span>)
+})
+<span class="cm">// 0: яблуко</span>
+<span class="cm">// 1: банан</span>
+<span class="cm">// 2: груша</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">✅</div>
+                        <div class="card-info">
+                            <div class="card-name">.includes() / .some() / .every()</div>
+                            <div class="card-short">Перевірити наявність елементів</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-array">Масив</span>
+                        <pre><code><span class="kw">const</span> fruits = [<span class="str">'яблуко'</span>, <span class="str">'банан'</span>]
+
+fruits.<span class="fn">includes</span>(<span class="str">'банан'</span>) <span class="cm">// true — чи є елемент</span>
+
+<span class="kw">const</span> numbers = [<span class="num">1</span>, <span class="num">3</span>, <span class="num">5</span>, <span class="num">7</span>]
+numbers.<span class="fn">some</span>(n => n > <span class="num">4</span>)  <span class="cm">// true — хоч один більше 4</span>
+numbers.<span class="fn">every</span>(n => n > <span class="num">0</span>) <span class="cm">// true — всі більше 0</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OBJECTS -->
+            <div class="section" id="section-objects">
+                <div class="section-title">🗂️ Об'єкти</div>
+                <div class="section-desc">Об'єкт — це набір пар ключ:значення. Як картка з характеристиками.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🗂️</div>
+                        <div class="card-info">
+                            <div class="card-name">Основи об'єктів</div>
+                            <div class="card-short">Створення, доступ, зміна</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="cm">// Створення об'єкта</span>
+<span class="kw">const</span> user = {
+  name: <span class="str">'Віктор'</span>,
+  age: <span class="num">30</span>,
+  isAdmin: <span class="kw">false</span>
+}
+
+<span class="cm">// Доступ до властивостей</span>
+console.<span class="fn">log</span>(user.name)    <span class="cm">// 'Віктор'</span>
+console.<span class="fn">log</span>(user[<span class="str">'age'</span>]) <span class="cm">// 30</span>
+
+<span class="cm">// Змінити значення</span>
+user.age = <span class="num">31</span>
+
+<span class="cm">// Додати нову властивість</span>
+user.city = <span class="str">'Київ'</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📦</div>
+                        <div class="card-info">
+                            <div class="card-name">Деструктуризація</div>
+                            <div class="card-short">Витягти значення з об'єкта або масиву</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="kw">const</span> user = { name: <span class="str">'Віктор'</span>, age: <span class="num">30</span>, city: <span class="str">'Київ'</span> }
+
+<span class="cm">// Без деструктуризації</span>
+<span class="kw">const</span> name = user.name
+<span class="kw">const</span> age = user.age
+
+<span class="cm">// З деструктуризацією (коротше)</span>
+<span class="kw">const</span> { name, age, city } = user
+
+<span class="cm">// Масив</span>
+<span class="kw">const</span> [first, second] = [<span class="str">'яблуко'</span>, <span class="str">'банан'</span>]
+<span class="cm">// first = 'яблуко', second = 'банан'</span>
+
+<span class="cm">// В React props часто так приймають</span>
+<span class="cm">// function Card({ title, text }) { ... }</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STRINGS -->
+            <div class="section" id="section-strings">
+                <div class="section-title">🔤 Рядки (Strings)</div>
+                <div class="section-desc">Методи для роботи з текстом.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🔤</div>
+                        <div class="card-info">
+                            <div class="card-name">Основні методи рядків</div>
+                            <div class="card-short">length, toUpperCase, toLowerCase, trim, split, includes</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-string">Рядок</span>
+                        <pre><code><span class="kw">const</span> str = <span class="str">'  Привіт Світ  '</span>
+
+str.length              <span class="cm">// 15 — довжина</span>
+str.<span class="fn">toUpperCase</span>()      <span class="cm">// 'ПРИВІТ СВІТ'</span>
+str.<span class="fn">toLowerCase</span>()      <span class="cm">// 'привіт світ'</span>
+str.<span class="fn">trim</span>()             <span class="cm">// 'Привіт Світ' (без пробілів)</span>
+str.<span class="fn">includes</span>(<span class="str">'Привіт'</span>) <span class="cm">// true</span>
+str.<span class="fn">startsWith</span>(<span class="str">'При'</span>) <span class="cm">// false (є пробіл спочатку)</span>
+str.<span class="fn">replace</span>(<span class="str">'Світ'</span>, <span class="str">'JS'</span>) <span class="cm">// 'Привіт JS'</span>
+str.<span class="fn">split</span>(<span class="str">' '</span>)         <span class="cm">// ['Привіт', 'Світ'] — в масив</span>
+str.<span class="fn">slice</span>(<span class="num">2</span>, <span class="num">8</span>)        <span class="cm">// вирізати частину</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FETCH -->
+            <div class="section" id="section-fetch">
+                <div class="section-title">🌐 fetch / API</div>
+                <div class="section-desc">fetch — команда для отримання даних з інтернету або сервера. Наприклад
+                    отримати список товарів, погоду, курс валют.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🌐</div>
+                        <div class="card-info">
+                            <div class="card-name">fetch()</div>
+                            <div class="card-short">Зробити запит до API</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-async">Async</span>
+                        <pre><code><span class="cm">// Базовий fetch</span>
+<span class="fn">fetch</span>(<span class="str">'https://api.example.com/users'</span>)
+  .<span class="fn">then</span>(response => response.<span class="fn">json</span>())
+  .<span class="fn">then</span>(data => {
+    console.<span class="fn">log</span>(data)
+  })
+  .<span class="fn">catch</span>(error => {
+    console.<span class="fn">log</span>(<span class="str">'Помилка:'</span>, error)
+  })</code></pre>
+                    </div>
+                </div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📤</div>
+                        <div class="card-info">
+                            <div class="card-name">fetch POST запит</div>
+                            <div class="card-short">Відправити дані на сервер</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-async">Async</span>
+                        <pre><code><span class="fn">fetch</span>(<span class="str">'https://api.example.com/users'</span>, {
+  method: <span class="str">'POST'</span>,
+  headers: {
+    <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span>
+  },
+  body: JSON.<span class="fn">stringify</span>({
+    name: <span class="str">'Віктор'</span>,
+    email: <span class="str">'<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="acdac5c7d8c3deecc9c1cdc5c082cfc3c1">[email&#160;protected]</a>'</span>
+  })
+})</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ASYNC -->
+            <div class="section" id="section-async">
+                <div class="section-title">⏳ async / await</div>
+                <div class="section-desc">Сучасний спосіб працювати з асинхронним кодом. Робить код схожим на звичайний
+                    синхронний.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">⏳</div>
+                        <div class="card-info">
+                            <div class="card-name">async / await</div>
+                            <div class="card-short">Зручний спосіб чекати на результат</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-async">Async</span>
+                        <p><strong>async</strong> перед функцією означає що вона асинхронна. <strong>await</strong>
+                            зупиняє виконання і чекає на результат.</p>
+                        <pre><code><span class="cm">// async функція</span>
+<span class="kw">async function</span> <span class="fn">getUsers</span>() {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> response = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://api.example.com/users'</span>)
+    <span class="kw">const</span> data = <span class="kw">await</span> response.<span class="fn">json</span>()
+    console.<span class="fn">log</span>(data)
+  } <span class="kw">catch</span> (error) {
+    console.<span class="fn">log</span>(<span class="str">'Помилка:'</span>, error)
+  }
+}
+
+<span class="fn">getUsers</span>()</code></pre>
+                        <div class="tip"><strong>try/catch</strong> — завжди обгортай async код щоб обробляти помилки.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROMISE -->
+            <div class="section" id="section-promise">
+                <div class="section-title">🤝 Promise</div>
+                <div class="section-desc">Promise — це обіцянка що код поверне результат пізніше. Або успішно (resolve)
+                    або з помилкою (reject).</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🤝</div>
+                        <div class="card-info">
+                            <div class="card-name">Promise</div>
+                            <div class="card-short">then / catch / finally</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-async">Async</span>
+                        <pre><code><span class="kw">const</span> promise = <span class="kw">new</span> <span class="fn">Promise</span>((resolve, reject) => {
+  <span class="cm">// Якщо все добре</span>
+  <span class="fn">resolve</span>(<span class="str">'Успіх!'</span>)
+  <span class="cm">// Якщо помилка</span>
+  <span class="cm">// reject('Помилка!')</span>
+})
+
+promise
+  .<span class="fn">then</span>(result => console.<span class="fn">log</span>(result))  <span class="cm">// 'Успіх!'</span>
+  .<span class="fn">catch</span>(error => console.<span class="fn">log</span>(error))   <span class="cm">// якщо помилка</span>
+  .<span class="fn">finally</span>(() => console.<span class="fn">log</span>(<span class="str">'Кінець'</span>)) <span class="cm">// завжди</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOCALSTORAGE -->
+            <div class="section" id="section-localstorage">
+                <div class="section-title">💾 localStorage</div>
+                <div class="section-desc">localStorage дозволяє зберігати дані в браузері. Дані зберігаються навіть
+                    після закриття вкладки.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">💾</div>
+                        <div class="card-info">
+                            <div class="card-name">localStorage</div>
+                            <div class="card-short">setItem, getItem, removeItem, clear</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="cm">// Зберегти</span>
+localStorage.<span class="fn">setItem</span>(<span class="str">'name'</span>, <span class="str">'Віктор'</span>)
+
+<span class="cm">// Прочитати</span>
+<span class="kw">const</span> name = localStorage.<span class="fn">getItem</span>(<span class="str">'name'</span>)
+
+<span class="cm">// Видалити один ключ</span>
+localStorage.<span class="fn">removeItem</span>(<span class="str">'name'</span>)
+
+<span class="cm">// Очистити все</span>
+localStorage.<span class="fn">clear</span>()
+
+<span class="cm">// Зберегти об'єкт (тільки рядки!)</span>
+<span class="kw">const</span> user = { name: <span class="str">'Віктор'</span>, age: <span class="num">30</span> }
+localStorage.<span class="fn">setItem</span>(<span class="str">'user'</span>, JSON.<span class="fn">stringify</span>(user))
+
+<span class="cm">// Прочитати об'єкт</span>
+<span class="kw">const</span> saved = JSON.<span class="fn">parse</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'user'</span>))</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONSOLE -->
+            <div class="section" id="section-console">
+                <div class="section-title">🖥️ console</div>
+                <div class="section-desc">Команди для виводу інформації в консоль браузера. Твій головний інструмент для
+                    дебагінгу.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🖥️</div>
+                        <div class="card-info">
+                            <div class="card-name">Методи console</div>
+                            <div class="card-short">log, error, warn, table, time</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code>console.<span class="fn">log</span>(<span class="str">'Звичайний вивід'</span>)
+console.<span class="fn">error</span>(<span class="str">'Помилка'</span>)        <span class="cm">// червоний</span>
+console.<span class="fn">warn</span>(<span class="str">'Попередження'</span>)    <span class="cm">// жовтий</span>
+console.<span class="fn">info</span>(<span class="str">'Інформація'</span>)     <span class="cm">// синій</span>
+
+<span class="cm">// Вивести об'єкт красиво</span>
+<span class="kw">const</span> user = { name: <span class="str">'Віктор'</span>, age: <span class="num">30</span> }
+console.<span class="fn">log</span>(user)
+
+<span class="cm">// Вивести масив як таблицю</span>
+console.<span class="fn">table</span>([user])
+
+<span class="cm">// Замір часу виконання</span>
+console.<span class="fn">time</span>(<span class="str">'myTimer'</span>)
+<span class="cm">// ... якийсь код</span>
+console.<span class="fn">timeEnd</span>(<span class="str">'myTimer'</span>)</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WINDOW -->
+            <div class="section" id="section-window">
+                <div class="section-title">🪟 window</div>
+                <div class="section-desc">window — це глобальний об'єкт браузера. Містить інформацію про вікно і багато
+                    корисних методів.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">🪟</div>
+                        <div class="card-info">
+                            <div class="card-name">Корисні властивості window</div>
+                            <div class="card-short">innerWidth, scrollY, location, alert</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code>window.innerWidth    <span class="cm">// ширина вікна браузера</span>
+window.innerHeight   <span class="cm">// висота вікна</span>
+window.scrollY       <span class="cm">// скільки прокрутили вниз</span>
+window.scrollX       <span class="cm">// скільки прокрутили вправо</span>
+
+window.location.href     <span class="cm">// поточний URL</span>
+window.location.reload() <span class="cm">// перезавантажити сторінку</span>
+
+<span class="fn">alert</span>(<span class="str">'Привіт!'</span>)           <span class="cm">// діалог</span>
+<span class="fn">confirm</span>(<span class="str">'Ви впевнені?'</span>)   <span class="cm">// true/false</span>
+<span class="fn">prompt</span>(<span class="str">'Введіть ім\'я:'</span>)  <span class="cm">// ввід тексту</span>
+
+<span class="cm">// Прокрутити до верху</span>
+window.<span class="fn">scrollTo</span>(<span class="num">0</span>, <span class="num">0</span>)</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMS -->
+            <div class="section" id="section-forms">
+                <div class="section-title">📝 Форми</div>
+                <div class="section-desc">Робота з HTML формами — отримання значень, валідація, відправка.</div>
+
+                <div class="card" onclick="toggleCard(this)">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <div class="card-info">
+                            <div class="card-name">Обробка форми</div>
+                            <div class="card-short">submit, value, reset</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <pre><code><span class="kw">const</span> form = document.<span class="fn">querySelector</span>(<span class="str">'#myForm'</span>)
+<span class="kw">const</span> nameInput = document.<span class="fn">querySelector</span>(<span class="str">'#name'</span>)
+<span class="kw">const</span> emailInput = document.<span class="fn">querySelector</span>(<span class="str">'#email'</span>)
+
+form.<span class="fn">addEventListener</span>(<span class="str">'submit'</span>, (e) => {
+  e.<span class="fn">preventDefault</span>() <span class="cm">// зупинити перезавантаження</span>
+
+  <span class="kw">const</span> name = nameInput.value.<span class="fn">trim</span>()
+  <span class="kw">const</span> email = emailInput.value.<span class="fn">trim</span>()
+
+  <span class="cm">// Валідація</span>
+  <span class="kw">if</span> (!name) {
+    <span class="fn">alert</span>(<span class="str">'Введіть ім\'я'</span>)
+    <span class="kw">return</span>
+  }
+
+  console.<span class="fn">log</span>({ name, email })
+  form.<span class="fn">reset</span>() <span class="cm">// очистити форму</span>
+})</code></pre>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-item active" data-section="home"><span>🏠</span><span>Головна</span></div>
+        <div class="mobile-nav-item" data-section="dom-select"><span>🎯</span><span>DOM</span></div>
+        <div class="mobile-nav-item" data-section="events-basic"><span>⚡</span><span>Події</span></div>
+        <div class="mobile-nav-item" data-section="vars"><span>📦</span><span>Змінні</span></div>
+        <div class="mobile-nav-item" data-section="functions"><span>⚙️</span><span>Функції</span></div>
+        <div class="mobile-nav-item" data-section="array-methods"><span>🛠️</span><span>Масиви</span></div>
+        <div class="mobile-nav-item" data-section="fetch"><span>🌐</span><span>API</span></div>
+        <div class="mobile-nav-item" data-section="localstorage"><span>💾</span><span>Storage</span></div>
+        <div class="mobile-nav-item" data-section="strings"><span>🔤</span><span>Рядки</span></div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
